@@ -1,6 +1,6 @@
 import { getArticleBySlug } from '@/lib/api';
 import { getCategoryIcon } from '@/lib/categoryIcons';
-import Link from 'next/link';
+import BackButton from '@/components/BackButton';
 import { notFound } from 'next/navigation';
 
 function linkifyContent(text: string): string {
@@ -34,26 +34,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-black">
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Back Link */}
-        <Link
-          href="/"
-          className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-8"
-        >
-          <svg
-            className="w-5 h-5 mr-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
-          </svg>
-          Back
-        </Link>
+        {/* Back Button */}
+        <BackButton />
 
         {/* Article Header */}
         <header className="mb-8">
