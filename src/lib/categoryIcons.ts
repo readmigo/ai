@@ -1,8 +1,7 @@
 export const categoryIcons: Record<string, string> = {
   llms: '🧠',
-  vision: '👁️',
-  audio: '🎵',
-  video: '🎬',
+  research: '🔬',
+  multimodal: '🎨',
   agents: '🤖',
   coding: '💻',
   robotics: '🦾',
