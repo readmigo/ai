@@ -5,12 +5,6 @@ import { notFound } from 'next/navigation';
 import { marked } from 'marked';
 
 function renderContent(text: string): string {
-  // If content already has HTML tags, use as-is with linkification
-  if (/<[a-z][\s\S]*>/i.test(text)) {
-    const urlRegex = /(https?:\/\/[^\s<]+)/g;
-    return text.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
-  }
-  // Otherwise parse as Markdown
   return marked.parse(text, { async: false }) as string;
 }
 
