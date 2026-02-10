@@ -3,6 +3,11 @@ import { getCategoryIcon } from '@/lib/categoryIcons';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+function linkifyContent(text: string): string {
+  const urlRegex = /(https?:\/\/[^\s<]+)/g;
+  return text.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline break-all">$1</a>');
+}
+
 interface ArticlePageProps {
   params: Promise<{
     slug: string;
@@ -87,7 +92,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {article.content ? (
             <div
               className="text-gray-800 dark:text-gray-200"
-              dangerouslySetInnerHTML={{ __html: article.content }}
+              dangerouslySetInnerHTML={{ __html: linkifyContent(article.content) }}
             />
           ) : (
             <p className="text-gray-600 dark:text-gray-400">
