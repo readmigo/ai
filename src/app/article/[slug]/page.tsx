@@ -2,10 +2,16 @@ import { getArticleBySlug } from '@/lib/api';
 import { getCategoryIcon } from '@/lib/categoryIcons';
 import BackButton from '@/components/BackButton';
 import { notFound } from 'next/navigation';
+import { marked } from 'marked';
 
-function linkifyContent(text: string): string {
-  const urlRegex = /(https?:\/\/[^\s<]+)/g;
-  return text.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline break-all">$1</a>');
+function renderContent(text: string): string {
+  // If content already has HTML tags, use as-is with linkification
+  if (/<[a-z][\s\S]*>/i.test(text)) {
+    const urlRegex = /(https?:\/\/[^\s<]+)/g;
+    return text.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+  }
+  // Otherwise parse as Markdown
+  return marked.parse(text, { async: false }) as string;
 }
 
 interface ArticlePageProps {
@@ -70,11 +76,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         </div>
 
         {/* Article Content */}
-        <div className="prose prose-lg max-w-none bg-white dark:bg-gray-900 rounded-lg p-8 shadow-sm">
+        <div className="prose prose-lg bg-white dark:bg-gray-900 rounded-lg p-8 shadow-sm mx-auto">
           {article.content ? (
             <div
               className="text-gray-800 dark:text-gray-200"
-              dangerouslySetInnerHTML={{ __html: linkifyContent(article.content) }}
+              dangerouslySetInnerHTML={{ __html: renderContent(article.content) }}
             />
           ) : (
             <p className="text-gray-600 dark:text-gray-400">
