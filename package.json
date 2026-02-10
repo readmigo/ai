@@ -1,12 +1,13 @@
 {
-  "name": "aiweekly-web",
+  "name": "ai-tech-review-web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 3003",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "marked": "^17.0.1",

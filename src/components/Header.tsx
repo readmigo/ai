@@ -14,7 +14,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">AI Weekly</span>
+            <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">Readmigo · AI Tech Review</span>
           </Link>
 
           {/* Desktop Navigation */}

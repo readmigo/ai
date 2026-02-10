@@ -11,8 +11,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "AI Weekly",
-  description: "Your weekly deep dive into AI",
+  title: "Readmigo · AI Tech Review",
+  description: "Your AI Tech Review",
 };
 
 export default function RootLayout({
