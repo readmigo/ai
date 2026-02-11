@@ -15,6 +15,37 @@ export default async function ExplorePage() {
           Discover articles by category
         </p>
 
+        {/* Featured Topics */}
+        <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+          Featured Topics
+        </h2>
+        <div className="mb-12">
+          <Link href="/topics/openclaw" className="group block">
+            <div className="border-2 rounded-lg p-6 hover:shadow-xl transition-all bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-950/30 dark:to-red-950/30 border-orange-200 dark:border-orange-800/50">
+              <div className="flex items-start gap-4">
+                <div className="w-16 h-16 rounded-lg flex items-center justify-center text-3xl bg-orange-100 dark:bg-orange-900/50 shrink-0">
+                  🦞
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                    OpenClaw / ClawBot
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    The viral open-source personal AI agent — curated articles covering setup guides, security analysis, reviews, and real-world use cases.
+                  </p>
+                  <span className="inline-block mt-3 text-sm font-medium text-orange-600 dark:text-orange-400 group-hover:underline">
+                    18 curated articles →
+                  </span>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        {/* Categories */}
+        <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+          Categories
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category) => (
             <Link
